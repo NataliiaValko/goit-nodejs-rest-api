@@ -1,7 +1,7 @@
 const { NotFound } = require('http-errors')
 
-const sendErrorIdRes = (contactId) => {
+const throwErrorId = (contactId) => {
   throw new NotFound(`Contact with id '${contactId}' not found`)
 }
 
-module.exports = sendErrorIdRes
+module.exports = throwErrorId

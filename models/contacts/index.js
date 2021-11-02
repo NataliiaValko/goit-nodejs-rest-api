@@ -3,7 +3,7 @@ const getById = require('./getById')
 const addContact = require('./addContact')
 const removeById = require('./removeById')
 const updateById = require('./updateById')
-const handlerIncorrectId = require('./handlerIncorrectId')
+const handleIncorrectId = require('./handleIncorrectId')
 
 module.exports = {
   getAll,
@@ -11,5 +11,5 @@ module.exports = {
   addContact,
   removeById,
   updateById,
-  handlerIncorrectId,
+  handleIncorrectId,
 }

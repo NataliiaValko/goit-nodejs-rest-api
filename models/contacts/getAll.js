@@ -4,8 +4,7 @@ const contactsDataPath = require('./contactsPath')
 
 const getAll = async () => {
   const data = await fs.readFile(contactsDataPath)
-  const contacts = JSON.parse(data)
-  return contacts
+  return JSON.parse(data)
 }
 
 module.exports = getAll

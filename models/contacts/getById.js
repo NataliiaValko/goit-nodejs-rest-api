@@ -1,5 +1,5 @@
 const getAll = require('./getAll')
-const handlerIncorrectId = require('./handlerIncorrectId')
+const handleIncorrectId = require('./handleIncorrectId')
 
 const getById = async (id) => {
   const contacts = await getAll()
@@ -7,7 +7,7 @@ const getById = async (id) => {
     (contact) => contact.id.toString() === id.toString()
   )
   if (!result) {
-    return handlerIncorrectId()
+    return handleIncorrectId()
   }
 
   return result
