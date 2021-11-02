@@ -1,13 +1,13 @@
 const contactsOperation = require('../../models/contacts')
-const { sendSuccessToRes, throwErrorId } = require('../../helpers')
+const { sendSuccessToRes, getNotFoundId } = require('../../helpers')
 
-const removeById = async (req, res) => {
+const removeById = async (req, res, next) => {
   const { contactId } = req.params
   const result = await contactsOperation.removeById(contactId)
 
   return result
     ? sendSuccessToRes(res, { message: 'Remove success' })
-    : throwErrorId(contactId)
+    : next(getNotFoundId(contactId))
 }
 
 module.exports = removeById

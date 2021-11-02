@@ -1,9 +1,9 @@
 const sendSuccessToRes = require('./sendSuccessToRes')
-const throwErrorId = require('./throwErrorId')
-const sendErrorReqToRes = require('./sendErrorReqToRes')
+const getNotFoundId = require('./getNotFoundId')
+const getBadRequest = require('./getBadRequest')
 
 module.exports = {
   sendSuccessToRes,
-  throwErrorId,
-  sendErrorReqToRes,
+  getNotFoundId,
+  getBadRequest,
 }

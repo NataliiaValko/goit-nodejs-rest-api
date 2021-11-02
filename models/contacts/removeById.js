@@ -4,7 +4,7 @@ const handleIncorrectId = require('./handleIncorrectId')
 
 const removeById = async (id) => {
   const contacts = await getAll()
-  const index = contacts.findIndex((contact) => contact.id.toString() === id)
+  const index = contacts.findIndex((contact) => contact.id === id)
   if (index === -1) {
     return handleIncorrectId()
   }
