@@ -1,9 +1,7 @@
-const getBadRequest = (res, error, status) => {
-  return res.status(status).json({
-    status: 'error',
-    code: status,
-    message: error.message,
-  })
+const { BadRequest } = require('http-errors')
+
+const getBadRequest = (error) => {
+  return new BadRequest(error.message)
 }
 
 module.exports = getBadRequest
