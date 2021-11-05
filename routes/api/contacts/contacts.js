@@ -10,18 +10,21 @@ const {
 } = require('../../../controllers/contacts')
 const router = new express.Router()
 
-router.get('/', controllerWrapper(getAll))
+router.get('/', (_, res) => {
+  res.send('<h1>Hello</h1>')
+})
+// router.get('/', controllerWrapper(getAll))
 
-router.get('/:contactId', controllerWrapper(getById))
+// router.get('/:contactId', controllerWrapper(getById))
 
-router.post('/', validation(contactSchema), controllerWrapper(addContact))
+// router.post('/', validation(contactSchema), controllerWrapper(addContact))
 
-router.put(
-  '/:contactId',
-  validation(contactSchema),
-  controllerWrapper(updateById)
-)
+// router.put(
+//   '/:contactId',
+//   validation(contactSchema),
+//   controllerWrapper(updateById)
+// )
 
-router.delete('/:contactId', controllerWrapper(removeById))
+// router.delete('/:contactId', controllerWrapper(removeById))
 
 module.exports = router
