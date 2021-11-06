@@ -1,9 +1,9 @@
-const contactsOperation = require('../../models/contacts')
+const { Contact } = require('../../models/contacts')
 const { sendSuccessToRes, getNotFoundId } = require('../../helpers')
 
 const getById = async (req, res, next) => {
   const { contactId } = req.params
-  const result = await contactsOperation.getById(contactId)
+  const result = await Contact.findById(contactId)
 
   return result
     ? sendSuccessToRes(res, { result })
