@@ -2,8 +2,8 @@ const express = require('express')
 const {
   joiContactSchema,
   joiFavoriteSchema,
-} = require('../../../models/contacts/contact')
-const { controllerWrapper, validation } = require('../../../middlewares')
+} = require('../../models/contacts/contact')
+const { controllerWrapper, validation } = require('../../middlewares')
 const {
   getAll,
   getById,
@@ -11,7 +11,7 @@ const {
   updateById,
   removeById,
   updateStatusContact,
-} = require('../../../controllers/contacts')
+} = require('../../controllers/contacts')
 const router = new express.Router()
 
 router.get('/', controllerWrapper(getAll))
