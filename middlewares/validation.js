@@ -1,7 +1,7 @@
 const { getBadRequest } = require('../helpers')
 
 const validation = (schema) => {
-  return async (req, res, next) => {
+  return async (req, _, next) => {
     const { error } = schema.validate(req.body)
     if (error) {
       next(getBadRequest(error))
