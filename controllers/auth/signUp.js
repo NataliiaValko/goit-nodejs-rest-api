@@ -1,6 +1,6 @@
 const { User } = require('../../models')
 const { Conflict } = require('http-errors')
-const { sendSuccessToRes, getNotFoundId } = require('../../helpers')
+const { sendSuccessToRes } = require('../../helpers')
 
 const signUp = async (req, res, next) => {
   const { email, password } = req.body

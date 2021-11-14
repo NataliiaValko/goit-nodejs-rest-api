@@ -1,7 +1,7 @@
 const { User } = require('../../models')
 const jwt = require('jsonwebtoken')
 const { getBadRequest } = require('../../helpers')
-const { sendSuccessToRes, getNotFoundId } = require('../../helpers')
+const { sendSuccessToRes } = require('../../helpers')
 
 require('dotenv').config()
 const { SECRET_KEY } = process.env
