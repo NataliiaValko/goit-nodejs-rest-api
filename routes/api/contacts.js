@@ -1,8 +1,5 @@
 const express = require('express')
-const {
-  joiContactSchema,
-  joiFavoriteSchema,
-} = require('../../models/contacts/contact')
+const { joiContactSchema, joiFavoriteSchema } = require('../../models')
 const { controllerWrapper, validation } = require('../../middlewares')
 const {
   getAll,
