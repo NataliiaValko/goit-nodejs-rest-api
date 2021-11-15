@@ -1,4 +1,4 @@
 const contacts = require('./contacts')
-const { logIn, signUp } = require('./auth')
+const { logIn, signUp, updateSubscription } = require('./auth')
 
-module.exports = { contacts, signUp, logIn }
+module.exports = { contacts, signUp, logIn, updateSubscription }

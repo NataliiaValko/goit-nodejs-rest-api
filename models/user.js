@@ -42,6 +42,14 @@ const joiUserSchema = Joi.object({
   password: Joi.string().min(6).required(),
 })
 
+const joiSubscriptionSchema = Joi.object({
+  subscription: Joi.string().valid('starter', 'pro', 'business'),
+})
+
 const User = model('user', userSchema)
 
-module.exports = { User, joiUserSchema }
+module.exports = {
+  User,
+  joiUserSchema,
+  joiSubscriptionSchema,
+}
