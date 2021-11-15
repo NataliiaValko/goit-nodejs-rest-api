@@ -3,12 +3,9 @@ const { getNotFoundId } = require('http-errors')
 const { sendSuccessToRes } = require('../../helpers')
 
 const updateSubscription = async (req, res, next) => {
-  const { _id } = req.user
-  const { subscription } = req.body
-
   const result = await User.findByIdAndUpdate(
-    _id,
-    { subscription },
+    req.user._id,
+    { subscription: req.body.subscription },
     { new: true }
   )
 
