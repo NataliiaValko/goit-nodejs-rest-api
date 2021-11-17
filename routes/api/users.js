@@ -4,12 +4,14 @@ const {
   controllerWrapper,
   validation,
   authenticate,
+  upload,
 } = require('../../middlewares')
 const {
   signUp,
   logIn,
   logOut,
   updateSubscription,
+  updateAvatar,
   getDataCurrentUser,
 } = require('../../controllers')
 const router = new express.Router()
@@ -18,6 +20,12 @@ router.post('/signup', validation(joiUserSchema), controllerWrapper(signUp))
 router.post('/login', validation(joiUserSchema), controllerWrapper(logIn))
 router.get('/current', authenticate, controllerWrapper(getDataCurrentUser))
 router.get('/logout', authenticate, controllerWrapper(logOut))
+router.patch(
+  '/avatars',
+  authenticate,
+  upload.single('avatarURL'),
+  controllerWrapper(updateAvatar)
+)
 router.patch(
   '/',
   authenticate,
