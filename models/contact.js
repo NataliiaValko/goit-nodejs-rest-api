@@ -19,6 +19,10 @@ const contactSchema = Schema(
     email: { type: String, match: PATTERNS.email, required: true },
     phone: { type: String, match: PATTERNS.phone, required: true },
     favorite: { type: Boolean, default: false },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+    },
   },
   { versionKey: false, timestamps: true }
 )
