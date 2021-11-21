@@ -7,8 +7,8 @@ const { sendSuccessToRes } = require('../../helpers')
 const avatarsDir = path.join(__dirname, '../../public/avatars')
 
 const signUp = async (req, res, next) => {
-  const avatarURL = gravatar.url('email')
   const { email, password } = req.body
+  const avatarURL = gravatar.url(email)
   const user = await User.findOne({ email })
   if (user) {
     next(new Conflict('Email in use'))

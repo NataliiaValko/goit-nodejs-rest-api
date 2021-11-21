@@ -2,14 +2,17 @@ const fs = require('fs/promises')
 const Jimp = require('jimp')
 const path = require('path')
 const { User } = require('../../models')
-const { getNotFoundId } = require('http-errors')
+const { getNotFoundId, UnsupportedMediaType } = require('http-errors')
 const { sendSuccessToRes } = require('../../helpers')
 
 const avatarsDir = path.join(__dirname, '../../public/avatars')
 
 const updateAvatar = async (req, res, next) => {
-  const { path: tmpUpload, originalname } = req.file
+  if (!req.file) {
+    return next(UnsupportedMediaType('Error loading file'))
+  }
 
+  const { path: tmpUpload, originalname } = req.file
   try {
     const { _id } = req.user
     const fileName = `${String(_id)}_${originalname}`
