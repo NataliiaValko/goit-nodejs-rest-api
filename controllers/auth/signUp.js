@@ -12,7 +12,7 @@ const signUp = async (req, res, next) => {
   const avatarURL = gravatar.url(email)
   const user = await User.findOne({ email })
   if (user) {
-    next(new Conflict('Email in use'))
+    return next(new Conflict('Email in use'))
   }
 
   const verificationToken = nanoid()
@@ -24,8 +24,8 @@ const signUp = async (req, res, next) => {
 
   const mail = {
     to: email,
-    subject: 'Confirm email address',
-    html: `<a href='http://localhost:3000/api/users/verify/${verificationToken}'>Click there for confirming your email address</a>`,
+    subject: 'Confirm the email address',
+    html: `<a href='http://localhost:3000/api/users/verify/${verificationToken}'><h1>Click there for confirming your email address</h1></a>`,
   }
   await sendMail(mail)
   sendSuccessToRes(

@@ -7,6 +7,7 @@ const {
   getDataCurrentUser,
   updateAvatar,
   verify,
+  reVerify,
 } = require('./auth')
 
 module.exports = {
@@ -17,5 +18,6 @@ module.exports = {
   updateSubscription,
   updateAvatar,
   logOut,
+  reVerify,
   getDataCurrentUser,
 }

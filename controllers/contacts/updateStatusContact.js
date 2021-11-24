@@ -7,7 +7,7 @@ const {
 
 const updateStatusContact = async (req, res, next) => {
   if (!Object.keys(req.body).length) {
-    next(getBadRequest({ message: 'missing field favorite' }))
+    return next(getBadRequest({ message: 'missing field favorite' }))
   }
 
   const { contactId } = req.params

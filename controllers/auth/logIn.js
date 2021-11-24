@@ -12,11 +12,11 @@ const logIn = async (req, res, next) => {
   const user = await User.findOne({ email })
 
   if (!user.verify) {
-    next(new Forbidden('Email needs to be confirmed'))
+    return next(new Forbidden('Email needs to be confirmed'))
   }
 
   if (!user || !user.verify || !user.comparePassword(password)) {
-    next(getBadRequest({ message: 'Email or password is wrong' }))
+    return next(getBadRequest({ message: 'Email or password is wrong' }))
   }
 
   const payload = { id: user._id }
