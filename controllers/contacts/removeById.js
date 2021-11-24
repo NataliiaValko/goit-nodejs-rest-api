@@ -3,7 +3,10 @@ const { sendSuccessToRes, getNotFoundId } = require('../../helpers')
 
 const removeById = async (req, res, next) => {
   const { contactId } = req.params
-  const result = await Contact.findByIdAndRemove(contactId)
+  const { _id: ownerId } = req.user
+  const condition = { owner: ownerId, _id: contactId }
+
+  const result = await Contact.findOneAndRemove(condition)
 
   return result
     ? sendSuccessToRes(res, { message: 'Remove success' })
