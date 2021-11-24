@@ -11,7 +11,6 @@ const updateStatusContact = async (req, res, next) => {
   }
 
   const { contactId } = req.params
-
   const { _id: ownerId } = req.user
   const condition = { owner: ownerId, _id: contactId }
 

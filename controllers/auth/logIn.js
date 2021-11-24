@@ -1,5 +1,6 @@
 const { User } = require('../../models')
 const jwt = require('jsonwebtoken')
+const { Forbidden } = require('http-errors')
 const { getBadRequest } = require('../../helpers')
 const { sendSuccessToRes } = require('../../helpers')
 
@@ -10,7 +11,11 @@ const logIn = async (req, res, next) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
 
-  if (!user || !user.comparePassword(password)) {
+  if (!user.verify) {
+    next(new Forbidden('Email needs to be confirmed'))
+  }
+
+  if (!user || !user.verify || !user.comparePassword(password)) {
     next(getBadRequest({ message: 'Email or password is wrong' }))
   }
 
