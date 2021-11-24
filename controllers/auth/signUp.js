@@ -17,6 +17,7 @@ const signUp = async (req, res, next) => {
   const newUser = new User({ email, avatarURL })
   newUser.setPassword(password)
   const avatarFolder = path.join(avatarsDir, String(newUser._id))
+  console.log(newUser)
   await fs.mkdir(avatarFolder)
   await newUser.save()
   sendSuccessToRes(
