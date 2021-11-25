@@ -33,7 +33,7 @@ const updateAvatar = async (req, res, next) => {
       : next(getNotFoundId(_id))
   } catch (error) {
     await fs.unlink(tmpUpload)
-    next(error)
+    return next(error)
   }
 }
 

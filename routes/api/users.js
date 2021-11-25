@@ -12,12 +12,17 @@ const {
   logOut,
   updateSubscription,
   updateAvatar,
+  verify,
+  reVerify,
   getDataCurrentUser,
 } = require('../../controllers')
 const router = new express.Router()
 
 router.post('/signup', validation(joiUserSchema), controllerWrapper(signUp))
 router.post('/login', validation(joiUserSchema), controllerWrapper(logIn))
+router.post('/verify', controllerWrapper(reVerify))
+router.get('/verify/:verificationToken', controllerWrapper(verify))
+
 router.get('/current', authenticate, controllerWrapper(getDataCurrentUser))
 router.get('/logout', authenticate, controllerWrapper(logOut))
 router.patch(
