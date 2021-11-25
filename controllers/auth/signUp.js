@@ -9,7 +9,7 @@ const avatarsDir = path.join(__dirname, '../../public/avatars')
 
 const signUp = async (req, res, next) => {
   const { email, password } = req.body
-  const avatarURL = gravatar.url(email)
+  const avatarURL = gravatar.url(email, { protocol: 'https', s: '250' })
   const user = await User.findOne({ email })
   if (user) {
     return next(new Conflict('Email in use'))
