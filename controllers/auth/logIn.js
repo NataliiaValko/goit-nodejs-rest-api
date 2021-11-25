@@ -15,7 +15,7 @@ const logIn = async (req, res, next) => {
     return next(new Forbidden('Email needs to be confirmed'))
   }
 
-  if (!user || !user.verify || !user.comparePassword(password)) {
+  if (!user || !user.comparePassword(password)) {
     return next(getBadRequest({ message: 'Email or password is wrong' }))
   }
 
